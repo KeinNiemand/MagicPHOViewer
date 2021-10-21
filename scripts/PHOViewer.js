@@ -21,15 +21,6 @@ function GetPHOTopics() {
     //Wrap topic originalPoster
     topics.contents().filter((index,node) => node.textContent.match(".*") && node.nodeType == 3).wrap('<span class="PHOTopicOp">');
 
-    //GetTopicName
-    /*** let topicName = $(".PHOTopicName");
-    let board = $(".PHOTopicBoards");
-    let originalPoster = $(".PHOTopicOp");
-    //Turn topic name blue for test purposes
-    topicName.css("color", "blue");
-    board.css("color", "red");
-    originalPoster.css("color", "green") */
-
     let pHOTopics = topics.each(() => true).map((index, element) => new PHOTopic(element))
     return pHOTopics
 }
