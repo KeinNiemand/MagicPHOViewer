@@ -8,7 +8,7 @@ $(document).ready(function() {
     //Turn topics red for testing purposes
     topics.each((i, element) => element.topicNameElement.css("color", "red"))
 
-    InsertPHOPost();
+    InsertPHOPost(topics[0].getPosts()[0]);
 });
 
 function GetPHOTopics() {
@@ -30,7 +30,7 @@ function GetPHOTopics() {
     return pHOTopics
 }
 
-function InsertPHOPost() {
+function InsertPHOPost(pHOPost) {
     let container = ".js-replyNewMessageContainer";
     let postHTML = `<article class="message message--post   js-post js-inlineModContainer   is-unread " data-author="Offshoreguy" data-content="post-21670492" id="js-post-21670492">
 
@@ -166,6 +166,8 @@ function InsertPHOPost() {
 
 
 </article>`
+
+    postHTML.replace("$$content$$", pHOPost.postContent);
 
     $(container).append(postHTML);
 }
