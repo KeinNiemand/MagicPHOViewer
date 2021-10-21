@@ -168,6 +168,8 @@ function InsertPHOPost(pHOPost) {
 </article>`
 
     postHTML = postHTML.replace("$$content$$", pHOPost.postContent);
+    postHTML = postHTML.replace("$$username$$", pHOPost.username);
+    postHTML = postHTML.replace("$$postedOn$$", pHOPost.postedOn);
 
     $(container).append(postHTML);
 }
@@ -223,8 +225,10 @@ class PHOTopic {
 class PHOpost {
     postHeader;
     userNameElement;
+    userName;
     userBadgesElement;
     postedOnElement;
+    postedOn;
     postContentElements;
     postContent = "";
     end;
@@ -232,12 +236,16 @@ class PHOpost {
     constructor(postHeader) {
         this.postHeader = $(postHeader)
         this.userNameElement = this.postHeader;
+        this.userName = userNameElement.text();
         this.userBadgesElement = this.postHeader.parent().filter((idx, element) => element.textContent.match("\(.*\)"));
         this.postedOnElement = this.postHeader.parent().nextAll().filter((idx, element) => element.textContent.match(".*Replied On.*$")).first();
+        this.postedOn = this.postedOnElement.text().replace("Replied On", "").replace("Posted On", "")
         this.end = this.postHeader.parent().nextAll().filter((idx, element) => element.textContent.match("►.*") ||
             element.textContent.match("End of Page.*") ||
             element.textContent.match("Showing Page.*")
         ).first();
+
+        //Combine the diffrent elements in postContentElements to get postContent
         this.postContentElements = this.postHeader.parent().nextUntil(this.end)
             .filter((idx, element) => !element.textContent.match(".*Replied On.*$") &&
                 !element.textContent.match(".*Posted On.*") &&
