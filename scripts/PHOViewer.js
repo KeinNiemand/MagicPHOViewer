@@ -19,8 +19,9 @@ function GetPHOTopics() {
     //Wrap topic Board
     topics.contents().filter((index,node) => node.textContent.match("In: Boards ►.*") && node.nodeType == 3).wrap('<span class="PHOTopicBoards">');
     //Wrap topic originalPoster
-    topics.contents().filter((index,node) => node.textContent.match(".*") && node.nodeType == 3).wrap('<span class="PHOTopicOp">');
-
+    topics.contents().filter((index,node) => node.nodeType == 3).wrap('<span class="PHOTopicOp">');
+    //Wrap All Lines
+    post.children().contents().filter((index,node) => node.nodeType == 3).wrap('<span class="line">');
     let pHOTopics = topics.each(() => true).map((index, element) => new PHOTopic(element))
     return pHOTopics
 }
@@ -31,6 +32,7 @@ class PHOTopic {
     topicName;
     board;
     originalPoster;
+    originalPosterBadges;
     postedOn;
 
     constructor(topic) {
@@ -41,5 +43,10 @@ class PHOTopic {
         this.board = this.topicHeader.find($(".PHOTopicBoards"));
         //Get orignalPoster
         this.originalPoster = this.topicHeader.find($(".PHOTopicOp"));
+        //Get Badges
+        this.userBadges = this.topicHeader.next();
+        //Get PostedOn
+        this.postedOn = this.topicHeader.nextAll().filter((i,node) => node.textContent.match("Posted On.*$"))
+        .first();
     }
 }
