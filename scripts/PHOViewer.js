@@ -50,10 +50,13 @@ function InsertPHOPost(pHOPost) {
                 </div>
                 <div class="message-userDetails">
                     <h4 class="message-name"><a href="" class="username " dir="auto" itemprop="name" data-user-id="" data-xf-init="member-tooltip" id="js-XFUniqueId112">$$username$$</a></h4>
+                    <h5 class="userTitle message-userTitle" dir="auto" itemprop="jobTitle">$$badges$$</h5>
 
 
 
                 </div>
+
+
 
 
 
@@ -168,8 +171,9 @@ function InsertPHOPost(pHOPost) {
 </article>`
 
     postHTML = postHTML.replace("$$content$$", pHOPost.postContent);
-    postHTML = postHTML.replace("$$username$$", pHOPost.username);
+    postHTML = postHTML.replace("$$username$$", pHOPost.userName);
     postHTML = postHTML.replace("$$postedOn$$", pHOPost.postedOn);
+    postHTML = postHTML.replace("$$badges$$", "")
 
     $(container).append(postHTML);
 }
@@ -236,7 +240,7 @@ class PHOpost {
     constructor(postHeader) {
         this.postHeader = $(postHeader)
         this.userNameElement = this.postHeader;
-        this.userName = userNameElement.text();
+        this.userName = this.userNameElement.text();
         this.userBadgesElement = this.postHeader.parent().filter((idx, element) => element.textContent.match("\(.*\)"));
         this.postedOnElement = this.postHeader.parent().nextAll().filter((idx, element) => element.textContent.match(".*Replied On.*$")).first();
         this.postedOn = this.postedOnElement.text().replace("Replied On", "").replace("Posted On", "")
