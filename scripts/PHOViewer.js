@@ -167,7 +167,7 @@ function InsertPHOPost(pHOPost) {
 
 </article>`
 
-    postHTML.replace("$$content$$", pHOPost.postContent);
+    postHTML = postHTML.replace("$$content$$", pHOPost.postContent);
 
     $(container).append(postHTML);
 }
