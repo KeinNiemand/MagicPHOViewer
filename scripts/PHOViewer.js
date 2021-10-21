@@ -1,4 +1,6 @@
-// A $( document ).ready() block.
+"use strict";
+let topics;
+
 $( document ).ready(function() {
     console.log( "Magic PHO Viewer Loaded" );
     //$("article.js-selectToQuote").css("color","green")
@@ -28,7 +30,7 @@ function GetPHOTopics() {
     board.css("color", "red");
     originalPoster.css("color", "green") */
 
-    pHOTopics = topics.each(() => true).map((index, element) => new PHOTopic(element))
+    let pHOTopics = topics.each(() => true).map((index, element) => new PHOTopic(element))
     return pHOTopics
 }
 
@@ -38,6 +40,7 @@ class PHOTopic {
     topicName;
     board;
     originalPoster;
+    postedOn;
 
     constructor(topic) {
         this.topicHeader = $(topic);
