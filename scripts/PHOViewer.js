@@ -240,7 +240,7 @@ class PHOpost {
     constructor(postHeader) {
         this.postHeader = $(postHeader)
         this.userNameElement = this.postHeader;
-        this.userName = this.userNameElement.text();
+        this.userName = this.userNameElement.text().replace("►", "");
         this.userBadgesElement = this.postHeader.parent().filter((idx, element) => element.textContent.match("\(.*\)"));
         this.postedOnElement = this.postHeader.parent().nextAll().filter((idx, element) => element.textContent.match(".*Replied On.*$")).first();
         this.postedOn = this.postedOnElement.text().replace("Replied On", "").replace("Posted On", "")
