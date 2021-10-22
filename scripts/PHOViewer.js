@@ -1,15 +1,17 @@
 "use strict";
-let topics;
 
 $(document).ready(function() {
     console.log("Magic PHO Viewer Loaded");
     //$("article.js-selectToQuote").css("color","green")
-    topics = GetPHOTopics();
-    //Turn topics red for testing purposes
-    topics.each((i, element) => element.topicNameElement.css("color", "red"))
-
-    ShowPHOTopic(topics[0]);
+    CreateMagicPHOViewerLinks();
 });
+
+function CreateMagicPHOViewerLinks() {
+    //Get PHO Topics (also wraps stuff and turns topics into links)
+    let topics = GetPHOTopics();
+    //ShowPHOTopic when clicking on a topic
+    topics.each((i, element) => element.topicNameElement.click(() => ShowPHOTopic(topics[i])));
+}
 
 function GetPHOTopics() {
     let post = $("article.js-selectToQuote")
@@ -17,7 +19,7 @@ function GetPHOTopics() {
     //Get PHO Topics
     let topics = bold.filter(function() { return this.innerHTML.match("♦ Topic:.*") });
     //Wrap topic Names
-    topics.contents().filter((index, node) => node.textContent.match("♦ Topic:.*") && node.nodeType == 3).wrap('<span class="PHOTopicName">');
+    topics.contents().filter((index, node) => node.textContent.match("♦ Topic:.*") && node.nodeType == 3).wrap('<a class="PHOTopicName">');
     //Wrap topic Board
     topics.contents().filter((index, node) => node.textContent.match("In: Boards ►.*") && node.nodeType == 3).wrap('<span class="PHOTopicBoards">');
     //Wrap topic originalPoster
