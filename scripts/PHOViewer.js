@@ -8,7 +8,7 @@ $(document).ready(function() {
     //Turn topics red for testing purposes
     topics.each((i, element) => element.topicNameElement.css("color", "red"))
 
-    InsertPHOPost(topics[0].getPosts()[0]);
+    ShowPHOTopic(topics[0]);
 });
 
 function GetPHOTopics() {
@@ -30,8 +30,8 @@ function GetPHOTopics() {
     return pHOTopics
 }
 
-function InsertPHOPost(pHOPost) {
-    let container = ".js-replyNewMessageContainer";
+function InsertPHOPost(phoPost) {
+    let container = $(".js-replyNewMessageContainer");
     let postHTML = `<article class="message message--post   js-post js-inlineModContainer   is-unread " data-author="Offshoreguy" data-content="post-21670492" id="js-post-21670492">
 
     <div class="message-inner">
@@ -170,13 +170,27 @@ function InsertPHOPost(pHOPost) {
 
 </article>`
 
-    postHTML = postHTML.replace("$$content$$", pHOPost.postContent);
-    postHTML = postHTML.replace("$$username$$", pHOPost.userName);
-    postHTML = postHTML.replace("$$postedOn$$", pHOPost.postedOn);
+    postHTML = postHTML.replace("$$content$$", phoPost.postContent);
+    postHTML = postHTML.replace("$$username$$", phoPost.userName);
+    postHTML = postHTML.replace("$$postedOn$$", phoPost.postedOn);
     postHTML = postHTML.replace("$$badges$$", "")
 
-    $(container).append(postHTML);
+    container.append(postHTML);
 }
+
+function ShowPHOTopic(phoTopic) {
+    let postContainer = $(".js-replyNewMessageContainer");
+    //get all pho posts
+    let phoPosts = phoTopic.getPosts();
+    //remove all existing posts
+    postContainer.empty();
+    //Go trough all post in the topic and insert them into the originalPosterBadgesElement
+
+    phoPosts.forEach((post, i) => {
+        InsertPHOPost(post);
+    });
+}
+
 
 class PHOTopic {
 
@@ -218,7 +232,10 @@ class PHOTopic {
         let topicContent = this.postedOnElement.nextUntil(this.endElement)
         let bold = topicContent.find($("b"));
         let postHeaders = bold.filter(function() { return this.innerHTML.match("►.*") });
-        return postHeaders.each(() => true).map((index, element) => new PHOpost(element))
+        let posts = [this.getOriginalPost()];
+        posts.push(...postHeaders.each(() => true).map((index, element) => new PHOpost(element)).toArray());
+        //let posts = postHeaders.each(() => true).map((index, element) => new PHOpost(element));
+        return posts;
     }
 
     getOriginalPost() {
