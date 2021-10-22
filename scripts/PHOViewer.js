@@ -48,7 +48,7 @@ class MagicPHOViewer {
 
     InsertPHOPost(phoPost) {
         let container = $(".js-replyNewMessageContainer");
-        let postHTML = `<article class="message message--post   js-post js-inlineModContainer   is-unread " data-author="Offshoreguy" data-content="post-21670492" id="js-post-21670492">
+        let postHTML = `<article class="message message--post   js-post js-inlineModContainer   is-unread ">
     
         <div class="message-inner">
     
