@@ -183,7 +183,7 @@ function InsertPHOPost(phoPost) {
 function ShowPHOTopic(phoTopic) {
     let postContainer = $(".js-replyNewMessageContainer");
     //get all pho posts
-    let phoPosts = phoTopic.getPosts();
+    let phoPosts = phoTopic.posts;
     //remove all existing posts
     postContainer.empty();
     //Go trough all post in the topic and insert them into the originalPosterBadgesElement
@@ -211,6 +211,7 @@ class PHOTopic {
     postedOnElement;
     postedOn;
     endElement;
+    posts;
 
     constructor(topic) {
         this.topicHeader = $(topic);
@@ -231,6 +232,8 @@ class PHOTopic {
         this.postedOn = this.postedOnElement.html();
         //Get End
         this.endElement = this.topicHeader.nextAll().filter((i, node) => node.textContent.match("■.*$")).first();
+        //Get posts
+        this.posts = this.getPosts();
     }
 
     getPosts() {
