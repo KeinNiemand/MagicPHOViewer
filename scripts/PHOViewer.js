@@ -191,6 +191,9 @@ function ShowPHOTopic(phoTopic) {
     phoPosts.forEach((post, i) => {
         InsertPHOPost(post);
     });
+
+    //Scroll to top of page after inserting all posts
+    window.scrollTo(0, 0);
 }
 
 
