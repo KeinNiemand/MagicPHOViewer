@@ -3,8 +3,8 @@
 $(document).ready(function() {
     console.log("Magic PHO Viewer Loaded");
     //$("article.js-selectToQuote").css("color","green")
-    let magicPHOViewer = new magicPHOViewer();
-    Init();
+    let magicPHOViewer = new MagicPHOViewer();
+    magicPHOViewer.Init();
 });
 
 class MagicPHOViewer {
@@ -15,13 +15,13 @@ class MagicPHOViewer {
     }
 
     Init() {
-        this.topics = GetPHOTopics();
-        CreateMagicPHOViewerLinks();
+        this.topics = this.GetPHOTopics();
+        this.CreateMagicPHOViewerLinks();
     }
 
     CreateMagicPHOViewerLinks() {
         //ShowPHOTopic when clicking on a topic
-        topics.each((i, element) => element.topicNameElement.click(() => ShowPHOTopic(topics[i])));
+        this.topics.each((i, element) => element.topicNameElement.click(() => this.ShowPHOTopic(topics[i])));
     }
 
     GetPHOTopics() {
@@ -200,7 +200,7 @@ class MagicPHOViewer {
         //Go trough all post in the topic and insert them into the originalPosterBadgesElement
 
         phoPosts.forEach((post, i) => {
-            InsertPHOPost(post);
+            this.InsertPHOPost(post);
         });
 
         //Scroll to top of page after inserting all posts
