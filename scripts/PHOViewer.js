@@ -1,6 +1,6 @@
 "use strict";
 
-$(document).ready(function() {
+$(document).ready(function () {
     console.log("Magic PHO Viewer Loaded");
     //$("article.js-selectToQuote").css("color","green")
     let magicPHOViewer = new MagicPHOViewer();
@@ -9,6 +9,9 @@ $(document).ready(function() {
 
 class MagicPHOViewer {
     topics;
+    currentTopicId;
+    //true if looking a pho topic
+    isViewingPHO = false;
 
     constructor() {
 
@@ -21,14 +24,14 @@ class MagicPHOViewer {
 
     CreateMagicPHOViewerLinks() {
         //ShowPHOTopic when clicking on a topic
-        this.topics.each((i, element) => element.topicNameElement.click(() => this.ShowPHOTopic(topics[i])));
+        this.topics.each((i, element) => element.topicNameElement.click(() => this.NavigateToPHOTopic(i)));
     }
 
     GetPHOTopics() {
         let post = $("article.js-selectToQuote")
         let bold = post.find($("b"));
         //Get PHO Topics
-        let topics = bold.filter(function() { return this.innerHTML.match("♦ Topic:.*") });
+        let topics = bold.filter(function () { return this.innerHTML.match("♦ Topic:.*") });
         //Wrap topic Names
         topics.contents().filter((index, node) => node.textContent.match("♦ Topic:.*") && node.nodeType == 3).wrap('<a class="PHOTopicName" style="cursor: pointer">');
         //Wrap topic Board
@@ -192,6 +195,12 @@ class MagicPHOViewer {
     }
 
     ShowPHOTopic(phoTopic) {
+        //Check if we are already viewing PHO if not viewPHO
+        if (!this.isViewingPHO) {
+            this.ViewPHO();
+        }
+
+
         let postContainer = $(".js-replyNewMessageContainer");
         //get all pho posts
         let phoPosts = phoTopic.posts;
@@ -205,7 +214,56 @@ class MagicPHOViewer {
 
         //Scroll to top of page after inserting all posts
         window.scrollTo(0, 0);
+
+
     }
+    //Chages page wide stuff that dosn't change between threads
+    ViewPHO() {
+        //Set is viewing PHO to true
+        this.isViewingPHO = true;
+
+        //Add Navigation
+        let backButton = $(".pageNavSimple-el--prev, .pageNav-jump--prev");
+        let forwardButton = $(".pageNavSimple-el--next, .pageNav-jump--next");
+
+        //Remove links from back/forward button
+        backButton.removeAttr("href");
+        forwardButton.removeAttr("href");
+
+        //Chance cursor to hand for back forward button
+        backButton.css("cursor", "pointer");
+        forwardButton.css("cursor", "pointer");
+
+        //Change button text so users can see this is PHO navigation
+        backButton.text("Prev PHO")
+        forwardButton.text("Next PHO");
+
+        //Add onclick handler to back/forward backButton
+        backButton.click(() => this.NavigatePreviousPHOTopic());
+        forwardButton.click(() => this.NavigateNextPHOTopic());
+    }
+
+    NavigateToPHOTopic(topicId) {
+        this.currentTopicId = topicId;
+        this.ShowPHOTopic(this.topics[topicId]);
+    }
+
+    NavigateNextPHOTopic() {
+        console.log("NavNext" + this.currentTopicId + ";" + this.topics.length)
+        if (this.currentTopicId < this.topics.length - 1) {
+            console.log("NavNextRuns")
+            this.currentTopicId++;
+            this.NavigateToPHOTopic(this.currentTopicId);
+        }
+    }
+
+    NavigatePreviousPHOTopic() {
+        if (this.currentTopicId > 0) {
+            this.currentTopicId--;
+            this.NavigateToPHOTopic(this.currentTopicId);
+        }
+    }
+
 }
 
 
@@ -253,7 +311,7 @@ class PHOTopic {
     getPosts() {
         let topicContent = this.postedOnElement.nextUntil(this.endElement)
         let bold = topicContent.find($("b"));
-        let postHeaders = bold.filter(function() { return this.innerHTML.match("►.*") });
+        let postHeaders = bold.filter(function () { return this.innerHTML.match("►.*") });
         let posts = [this.getOriginalPost()];
         posts.push(...postHeaders.each(() => true).map((index, element) => new PHOpost(element)).toArray());
         //let posts = postHeaders.each(() => true).map((index, element) => new PHOpost(element));
