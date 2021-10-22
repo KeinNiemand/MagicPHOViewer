@@ -44,7 +44,7 @@ function InsertPHOPost(phoPost) {
             <section itemscope="" class="message-user">
                 <div class="message-avatar ">
                     <div class="message-avatar-wrapper">
-                        <a href="" class="avatar avatar--m avatar--default avatar--default--dynamic" data-user-id="" data-xf-init="member-tooltip" style="background-color: #cc7033; color: #3d220f">
+                        <a href="" class="avatar avatar--m avatar--default avatar--default--dynamic" data-user-id="" data-xf-init="member-tooltip" style="background-color: #05a0c3; color: #3d220f">
                             <span></span>
                         </a>
 
