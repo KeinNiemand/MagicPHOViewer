@@ -30,7 +30,7 @@ class MagicPHOViewer {
         //Get PHO Topics
         let topics = bold.filter(function() { return this.innerHTML.match("♦ Topic:.*") });
         //Wrap topic Names
-        topics.contents().filter((index, node) => node.textContent.match("♦ Topic:.*") && node.nodeType == 3).wrap('<a class="PHOTopicName">');
+        topics.contents().filter((index, node) => node.textContent.match("♦ Topic:.*") && node.nodeType == 3).wrap('<a class="PHOTopicName" style="cursor: pointer">');
         //Wrap topic Board
         topics.contents().filter((index, node) => node.textContent.match("In: Boards ►.*") && node.nodeType == 3).wrap('<span class="PHOTopicBoards">');
         //Wrap topic originalPoster
