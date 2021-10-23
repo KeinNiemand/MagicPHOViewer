@@ -3,7 +3,7 @@
 let magicPHOViewer;
 
 $(document).ready(function () {
-    let version = "0.4.0";
+    let version = "0.4.1";
     console.log("Magic PHO Viewer " + version + " loading...");
     //$("article.js-selectToQuote").css("color","green")
     magicPHOViewer = new MagicPHOViewer();
