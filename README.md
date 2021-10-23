@@ -26,5 +26,15 @@ PHO is supposed to be a forum and while the regular PHO formatting is trying it'
 		$("body").append("<script src='https://raw.githack.com/KeinNiemand/MagicPHOViewer/master/MagicPHOViewerLoader.user.js' crossorigin='anonymous'><\/script>")
 	
 # How to Use
+
 When the script is loaded PHO topics in PHO interludes will turn into links, simply click on the links to view them with Magic PHO Viewer.
 For PHO interludes with multiple topics you can navigate between pages with Sufficiant Velocitys Previous Page and next page buttons.
+If you want to return to the regular view click the back to normal view button next to to the previous/next page buttons.
+
+# Reporting Bugs/Suggesting Improvments
+
+If you find a bug or want to suggest an improvment please open an [Issue](https://github.com/KeinNiemand/MagicPHOViewer/issues/new)
+
+# Contributing
+
+If you want to contribute, fork this repo and create a pull request.
