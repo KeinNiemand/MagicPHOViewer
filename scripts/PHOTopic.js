@@ -48,6 +48,8 @@ class PHOTopic {
     }
 
     getOriginalPost() {
-        return new PHOpost(this.originalPosterElement);
+        let originalPost = new PHOpost(this.originalPosterElement);
+        originalPost.userBadges = this.originalPosterBadges;
+        return originalPost;
     }
 }
