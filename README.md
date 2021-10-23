@@ -28,3 +28,4 @@ PHO is supposed to be a forum and while the regular PHO formatting is trying it'
 # How to Use
 When the script is loaded PHO topics in PHO interludes will turn into links, simply click on the links to view them with Magic PHO Viewer.
 For PHO interludes with multiple topics you can navigate between pages with Sufficiant Velocitys Previous Page and next page buttons.
+If you want to return to the regular view click the back to normal view button next to to the previous/next page buttons.
