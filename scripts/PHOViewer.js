@@ -190,7 +190,7 @@ class MagicPHOViewer {
         postHTML = postHTML.replace("$$content$$", phoPost.postContent);
         postHTML = postHTML.replace("$$username$$", phoPost.userName);
         postHTML = postHTML.replace("$$postedOn$$", phoPost.postedOn);
-        postHTML = postHTML.replace("$$badges$$", "")
+        postHTML = postHTML.replace("$$badges$$", phoPost.userBadges);
 
         container.append(postHTML);
     }

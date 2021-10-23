@@ -3,6 +3,7 @@ class PHOpost {
     userNameElement;
     userName;
     userBadgesElement;
+    userBadges;
     postedOnElement;
     postedOn;
     postContentElements;
@@ -14,6 +15,7 @@ class PHOpost {
         this.userNameElement = this.postHeader;
         this.userName = this.userNameElement.text().replace("►", "");
         this.userBadgesElement = this.postHeader.parent().filter((idx, element) => element.textContent.match("\(.*\)"));
+        this.userBadges = this.userBadgesElement.text().replace("►", "").replace(this.userName, "");
         this.postedOnElement = this.postHeader.parent().nextAll().filter((idx, element) => element.textContent.match(".*Replied On.*$")).first();
         this.postedOn = this.postedOnElement.text().replace("Replied On", "").replace("Posted On", "")
         this.end = this.postHeader.parent().nextAll().filter((idx, element) => element.textContent.match("►.*") ||
