@@ -266,6 +266,8 @@ class MagicPHOViewer {
         $("#top").html(this.nonPHOpageData);
         //reinit magic pho viewer
         this.Init();
+        //scroll to pho link
+        this.topics[this.currentTopicId].topicNameElement.get(0).scrollIntoView();
     }
 
     NavigateToPHOTopic(topicId) {
