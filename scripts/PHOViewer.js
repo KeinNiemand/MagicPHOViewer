@@ -276,9 +276,7 @@ class MagicPHOViewer {
     }
 
     NavigateNextPHOTopic() {
-        console.log("NavNext" + this.currentTopicId + ";" + this.topics.length)
         if (this.currentTopicId < this.topics.length - 1) {
-            console.log("NavNextRuns")
             this.currentTopicId++;
             this.NavigateToPHOTopic(this.currentTopicId);
         }
