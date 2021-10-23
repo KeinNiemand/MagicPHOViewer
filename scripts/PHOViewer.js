@@ -1,7 +1,7 @@
 "use strict";
 
 $(document).ready(function () {
-    let version = "0.3.0";
+    let version = "0.3.1";
     console.log("Magic PHO Viewer " + version + " Loaded");
     //$("article.js-selectToQuote").css("color","green")
     let magicPHOViewer = new MagicPHOViewer();
