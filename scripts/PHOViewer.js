@@ -223,7 +223,7 @@ class MagicPHOViewer {
     //Chages page wide stuff that dosn't change between threads
     ViewPHO() {
         //Save old page
-        this.nonPHOpageData = $("body").html();
+        this.nonPHOpageData = $("#top").html();
         //Set is viewing PHO to true
         this.isViewingPHO = true;
 
@@ -260,7 +260,9 @@ class MagicPHOViewer {
     RetrunFromPHO() {
         this.isViewingPHO = false;
         //restore old page
-        $("body").html(this.nonPHOpageData);
+        $("#top").html(this.nonPHOpageData);
+        //readd links
+        this.CreateMagicPHOViewerLinks();
     }
 
     NavigateToPHOTopic(topicId) {
