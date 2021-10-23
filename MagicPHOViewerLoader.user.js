@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         MagicPHOViewerLoader
-// @version      0.2
+// @version      0.3.1
 // @description  Loads Magic PHO Viewer
 // @author       KeinNiemand
 // @match        https://forums.sufficientvelocity.com/threads/*
@@ -12,7 +12,7 @@
     'use strict';
 
     // Your code here...
-    $("body").append("<script src='https://raw.githack.com/KeinNiemand/MagicPHOViewer/master/scripts/PHOTopic.js' crossorigin='anonymous'><\/script>")
-    $("body").append("<script src='https://raw.githack.com/KeinNiemand/MagicPHOViewer/master/scripts/PHOpost.js' crossorigin='anonymous'><\/script>")
-    $("body").append("<script src='https://raw.githack.com/KeinNiemand/MagicPHOViewer/master/scripts/PHOViewer.js' crossorigin='anonymous'><\/script>")
+    $("body").append("<script src='https://rawcdn.githack.com/KeinNiemand/MagicPHOViewer/0.3.1/scripts/PHOTopic.js' crossorigin='anonymous'><\/script>")
+    $("body").append("<script src='https://rawcdn.githack.com/KeinNiemand/MagicPHOViewer/0.3.1/scripts/PHOpost.js' crossorigin='anonymous'><\/script>")
+    $("body").append("<script src='https://rawcdn.githack.com/KeinNiemand/MagicPHOViewer/0.3.1/scripts/PHOViewer.js' crossorigin='anonymous'><\/script>")
 })();
