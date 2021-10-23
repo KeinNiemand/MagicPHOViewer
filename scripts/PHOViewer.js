@@ -264,8 +264,8 @@ class MagicPHOViewer {
         this.isViewingPHO = false;
         //restore old page
         $("#top").html(this.nonPHOpageData);
-        //readd links
-        this.CreateMagicPHOViewerLinks();
+        //reinit magic pho viewer
+        this.Init();
     }
 
     NavigateToPHOTopic(topicId) {
