@@ -13,6 +13,8 @@ class MagicPHOViewer {
     currentTopicId;
     //true if looking a pho topic
     isViewingPHO = false;
+    //html for entire page before viewing PHO
+    nonPHOpageData;
 
     constructor() {
 
@@ -220,6 +222,8 @@ class MagicPHOViewer {
     }
     //Chages page wide stuff that dosn't change between threads
     ViewPHO() {
+        //Save old page
+        this.nonPHOpageData = $("body").html();
         //Set is viewing PHO to true
         this.isViewingPHO = true;
 
@@ -248,7 +252,15 @@ class MagicPHOViewer {
         pageNavPages.remove();
 
         //Add back to normal view button
-        forwardButton.parent().append("<a class='pageNav-jump'>↩ back to normal view</a>");
+        let returnButton = forwardButton.parent().append("<a class='pageNav-jump'>↩ back to normal view</a>");
+        returnButton.click(() => this.RetrunFromPHO());
+    }
+
+    //Retruns back to regular chapter view after viewing pho.
+    RetrunFromPHO() {
+        this.isViewingPHO = false;
+        //restore old page
+        $("body").html(this.nonPHOpageData);
     }
 
     NavigateToPHOTopic(topicId) {
