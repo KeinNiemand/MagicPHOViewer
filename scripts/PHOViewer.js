@@ -226,6 +226,7 @@ class MagicPHOViewer {
         //Add Navigation
         let backButton = $(".pageNavSimple-el--prev, .pageNav-jump--prev");
         let forwardButton = $(".pageNavSimple-el--next, .pageNav-jump--next");
+        let pageNavPages = $(".pageNavSimple-el--current, .pageNav-main");
 
         //Remove links from back/forward button
         backButton.removeAttr("href");
@@ -242,6 +243,12 @@ class MagicPHOViewer {
         //Add onclick handler to back/forward backButton
         backButton.click(() => this.NavigatePreviousPHOTopic());
         forwardButton.click(() => this.NavigateNextPHOTopic());
+
+        //Remove center navigation button/page selector
+        pageNavPages.remove();
+
+        //Add back to normal view button
+        forwardButton.parent().append("<a class='.pageNav-jump'>Back to normal view></a>");
     }
 
     NavigateToPHOTopic(topicId) {
