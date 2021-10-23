@@ -254,7 +254,7 @@ class MagicPHOViewer {
         pageNavPages.remove();
 
         //Add back to normal view button
-        forwardButton.parent().append("<a class='pageNav-jump returnFromPHO'>↩ back to normal view</a>");
+        forwardButton.parent().append("<a class='pageNav-jump returnFromPHO' style='cursor: pointer' >↩ back to normal view</a>");
         let returnButton = $(".returnFromPHO");
         returnButton.click(() => this.RetrunFromPHO());
     }
