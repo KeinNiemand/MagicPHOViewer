@@ -271,5 +271,5 @@ class MagicPHOViewer {
             this.NavigateToPHOTopic(this.currentTopicId);
         }
     }
-    
+
 }
