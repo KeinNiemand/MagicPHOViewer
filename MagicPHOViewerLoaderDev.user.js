@@ -4,6 +4,7 @@
 // @description  Loads Magic PHO Viewer
 // @author       KeinNiemand
 // @match        https://forums.sufficientvelocity.com/threads/*
+// @match        https://forums.spacebattles.com/threads/*
 // @icon         https://www.google.com/s2/favicons?domain=sufficientvelocity.com
 // @grant        none
 // ==/UserScript==
