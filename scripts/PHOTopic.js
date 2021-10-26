@@ -29,13 +29,12 @@ class PHOTopic {
         this.originalPosterBadgesElement = this.topicHeader.next();
         this.originalPosterBadges = this.originalPosterBadgesElement.html();
         //Get PostedOn
-        this.postedOnElement = this.topicHeader.nextAll().filter((i, node) => node.textContent.match("Posted On.*$")).first()
+        this.postedOnElement = this.topicHeader.nextAll().filter((i, node) => node.textContent.toLowerCase().match("posted on.*$")).first()
         this.postedOn = this.postedOnElement.html();
         //Get End
         this.endElement = this.topicHeader.nextAll().filter((i, node) => 
-        node.textContent.match("■.*$") ||
-        node.textContent.match("(\\*\')+"))
-        .first();
+        node.textContent.match("■.*$")
+        .first());
         //Backup End if no last element was found => last element
         if (this.endElement.length === 0) {
             this.endElement = this.topicHeader.nextAll().last();
