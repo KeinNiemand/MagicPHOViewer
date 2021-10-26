@@ -21,7 +21,7 @@ class PHOTopic {
         this.topicName = this.topicNameElement.html().replace("♦ Topic:", "").replace("♦Topic:", "");
         //Get Board
         this.boardElement = this.topicHeader.find($(".PHOTopicBoards"));
-        this.board = this.boardElement.html().replace("in:", "");
+        this.board = this.boardElement.html().replace("In:", "");
         //Get orignalPoster
         this.originalPosterElement = this.topicHeader.find($(".PHOTopicOp"));
         this.originalPoster = this.originalPosterElement.html();
