@@ -64,7 +64,7 @@ class MagicPHOViewer {
                     <div class="message-avatar ">
                         <div class="message-avatar-wrapper">
                             <a href="" class="avatar avatar--m avatar--default avatar--default--dynamic" data-user-id="" data-xf-init="member-tooltip" style="background-color: #05a0c3; color: #3d220f">
-                                <span></span>
+                                <span>$$avaterLetter$$</span>
                             </a>
     
                         </div>
@@ -195,6 +195,7 @@ class MagicPHOViewer {
         postHTML = postHTML.replace("$$username$$", phoPost.userName);
         postHTML = postHTML.replace("$$postedOn$$", phoPost.postedOn);
         postHTML = postHTML.replace("$$badges$$", phoPost.userBadges);
+        postHTML = postHTML.replace("$$avaterLetter$$", phoPost.userName.charAt(0));
 
         container.append(postHTML);
     }
