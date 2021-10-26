@@ -217,6 +217,19 @@ class MagicPHOViewer {
             this.InsertPHOPost(post);
         });
 
+        //Show Topic Title
+        let threadTitleElement = $(".p-title-value");
+        threadTitleElement.text(phoTopic.topicName);
+
+        //Show Topic Board
+        let topicLocationElement = $(".p-breadcrumbs");
+        topicLocationElement.empty();
+        topicLocationElement.append("<span>" + phoTopic.board + "</span>")
+
+        //Show Topic Original Poster username
+        let originalUserNameElement = $(".p-description .username");
+        originalUserNameElement.text(phoTopic.originalPoster);
+
         //Scroll to top of page after inserting all posts
         window.scrollTo(0, 0);
 
