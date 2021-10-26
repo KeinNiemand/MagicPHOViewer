@@ -25,8 +25,9 @@ class PHOpost {
 
         //Combine the diffrent elements in postContentElements to get postContent
         this.postContentElements = this.postHeader.parent().nextUntil(this.end)
-            .filter((idx, element) => !element.textContent.match(".*Replied On.*$") &&
-                !element.textContent.match(".*Posted On.*") &&
+            .filter((idx, element) => 
+                !element.textContent.toLowerCase().match(".*replied on.*$") &&
+                !element.textContent.toLowerCase().match(".*posted on.*") &&
                 !element.textContent.match(".*\(Original Poster\).*"));
 
         this.postContentElements.each((i, element) => this.postContent += element.outerHTML);
