@@ -3,8 +3,8 @@
 // @version      0.5.0
 // @description  Loads Magic PHO Viewer
 // @author       KeinNiemand
-// @inculde      https://forums.sufficientvelocity.com/threads/*
-// @inculde      https://forums.spacebattles.com//threads/*
+// @include      https://forums.sufficientvelocity.com/threads/*
+// @include      https://forums.spacebattles.com//threads/*
 // @icon         https://www.google.com/s2/favicons?domain=sufficientvelocity.com
 // @grant        none
 // ==/UserScript==
