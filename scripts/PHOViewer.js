@@ -232,7 +232,7 @@ class MagicPHOViewer {
 
         //Show Post Time
         let postTimeElement = $(".p-description time");
-        time.text(phoTopic.postedOn);
+        postTimeElement.text(phoTopic.postedOn);
 
         //Scroll to top of page after inserting all posts
         window.scrollTo(0, 0);
