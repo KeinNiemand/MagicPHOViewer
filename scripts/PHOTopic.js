@@ -34,7 +34,7 @@ class PHOTopic {
         //Get End
         this.endElement = this.topicHeader.nextAll().filter((i, node) => 
         node.textContent.match("■.*$")
-        .first());
+        ).first();
         //Backup End if no last element was found => last element
         if (this.endElement.length === 0) {
             this.endElement = this.topicHeader.nextAll().last();
