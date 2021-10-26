@@ -231,6 +231,10 @@ class MagicPHOViewer {
         let originalUserNameElement = $(".p-description .username");
         originalUserNameElement.text(phoTopic.originalPoster);
 
+        //Show Post Time
+        let postTimeElement = $(".p-description time");
+        time.text(phoTopic.postedOn);
+
         //Scroll to top of page after inserting all posts
         window.scrollTo(0, 0);
 
